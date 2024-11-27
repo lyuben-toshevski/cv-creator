@@ -1,0 +1,16 @@
+@use "sass:math";
+
+$grid-padding: 15px;
+
+$grid-width-1: math.percentage(math.div(1, 12));
+$grid-width-2: math.percentage(math.div(2, 12));
+$grid-width-3: 25%;
+$grid-width-4: math.percentage(math.div(4, 12));
+$grid-width-5: math.percentage(math.div(5, 12));
+$grid-width-6: 50%;
+$grid-width-7: math.percentage(math.div(7, 12));
+$grid-width-8: math.percentage(math.div(8, 12));
+$grid-width-9: 75%;
+$grid-width-10: math.percentage(math.div(10, 12));
+$grid-width-11: math.percentage(math.div(11, 12));
+$grid-width-12: 100%;

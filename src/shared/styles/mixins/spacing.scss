@@ -1,0 +1,55 @@
+// Paddings
+@mixin padding($value) {
+  padding: $value !important;
+}
+
+@mixin paddingTop($value) {
+  padding-top: $value !important;
+}
+@mixin paddingRight($value) {
+  padding-right: $value !important;
+}
+@mixin paddingBottom($value) {
+  padding-bottom: $value !important;
+}
+@mixin paddingLeft($value) {
+  padding-left: $value !important;
+}
+
+@mixin paddingHorizontal($value) {
+  padding-left: $value !important;
+  padding-right: $value !important;
+}
+
+@mixin paddingVertical($value) {
+  padding-top: $value !important;
+  padding-bottom: $value !important;
+}
+
+// Margins
+@mixin margin($value) {
+  margin: $value !important;
+}
+
+@mixin marginTop($value) {
+  margin-top: $value !important;
+}
+@mixin marginRight($value) {
+  margin-right: $value !important;
+}
+@mixin marginBottom($value) {
+  margin-bottom: $value !important;
+}
+@mixin marginLeft($value) {
+  margin-left: $value !important;
+}
+
+@mixin marginHorizontal($value) {
+  margin-left: $value !important;
+  margin-right: $value !important;
+}
+
+@mixin marginVertical($value) {
+  margin-top: $value !important;
+  margin-bottom: $value !important;
+}

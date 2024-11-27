@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+
+// The z-index puts all elements above the overlay so that the focus/edit can move freely
+body * {
+  z-index: 1;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 0; /* Below focused element */
+}
+
+.focused {
+  position: relative;
+  z-index: 1000; /* Above overlay */
+  background: white;
+  &.inversed {
+    background-color: rgba(124, 168, 230, 0.79);
+  }
+}
+
+@import "variables/index";
+@import "classes/index";

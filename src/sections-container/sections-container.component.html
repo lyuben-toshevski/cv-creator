@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-xs-8 p-0">
+    <div class="plr-9">
+      @for (section of sections | slice:0:sectionsHalf; track $index) {
+      <app-section-with-entries
+        class="mb-8"
+        [title]="section.title"
+        [subtitle]="section.subtitle"
+        [content]="section.content"
+      ></app-section-with-entries>
+      }
+    </div>
+  </div>
+  <div class="col-xs-4 p-0">
+    <div class="plr-9">
+      @for (section of sections|slice:sectionsHalf; track $index) {
+      <app-section-with-entries
+        [isInversedColors]="true"
+        [title]="section.title"
+        [subtitle]="section.subtitle"
+        [content]="section.content"
+      ></app-section-with-entries>
+      }
+    </div>
+  </div>
+</div>

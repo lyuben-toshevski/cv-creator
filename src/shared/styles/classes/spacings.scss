@@ -1,0 +1,65 @@
+@import "mixins";
+
+// Generate classes for the padding dynamically
+@each $key, $value in $spacing-values {
+  // Paddings
+  .p-#{$key} {
+    @include padding($value);
+  }
+
+  .pt-#{$key} {
+    @include paddingTop($value);
+  }
+
+  .pr-#{$key} {
+    @include paddingRight($value);
+  }
+
+  .pb-#{$key} {
+    @include paddingBottom($value);
+  }
+
+  .pl-#{$key} {
+    @include paddingLeft($value);
+  }
+
+  .plr-#{$key} {
+    @include paddingHorizontal($value);
+  }
+
+  .ptb-#{$key} {
+    @include paddingVertical($value);
+  }
+
+  // Margins
+  .m-#{$key} {
+    @include margin($value);
+  }
+
+  .mt-#{$key} {
+    @include marginTop($value);
+  }
+
+  .mr-#{$key} {
+    @include marginRight($value);
+  }
+
+  .mb-#{$key} {
+    @include marginBottom($value);
+  }
+
+  .ml-#{$key} {
+    @include marginLeft($value);
+  }
+
+  .mlr-#{$key} {
+    @include marginHorizontal($value);
+  }
+
+  .mtb-#{$key} {
+    @include marginVertical($value);
+  }
+  .mlr-#{key} {
+    @include marginHorizontal($value);
+  }
+}
