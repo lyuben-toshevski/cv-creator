@@ -72,10 +72,16 @@
 
 @media (min-width: $smMin) {
   @each $key, $value in $spacing-values {
+    // Paddings
+    .p-sm-#{$key} {
+      @include padding($value);
+    }
+
     .plr-sm-#{$key} {
       @include paddingHorizontal($value);
     }
 
+    // Margins
     .mlr-sm-#{$key} {
       @include marginHorizontal($value);
     }

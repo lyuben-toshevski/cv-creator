@@ -1,6 +1,17 @@
+@import "variables";
+
 :host {
   display: block;
   * {
     color: inherit;
+  }
+
+  .border {
+    border: 1px solid;
+  }
+  &:not(.inversed) {
+    .border {
+      border-color: $light-gray;
+    }
   }
 }

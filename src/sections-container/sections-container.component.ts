@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { SectionWithEntriesComponent } from '@shared/components';
 import { SlicePipe } from '@angular/common';
+import { EditableTextDirective } from '@shared/directives';
 
 @Component({
   selector: 'app-sections-container',
   standalone: true,
-  imports: [SectionWithEntriesComponent, SlicePipe],
+  imports: [EditableTextDirective, SectionWithEntriesComponent, SlicePipe],
   templateUrl: './sections-container.component.html',
   styleUrl: './sections-container.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
