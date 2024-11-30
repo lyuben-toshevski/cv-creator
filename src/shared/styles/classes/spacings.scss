@@ -1,4 +1,5 @@
 @import "mixins";
+@import "variables";
 
 // Generate classes for the padding dynamically
 @each $key, $value in $spacing-values {
@@ -61,5 +62,17 @@
   }
   .mlr-#{key} {
     @include marginHorizontal($value);
+  }
+}
+
+@media (min-width: $smMin) {
+  @each $key, $value in $spacing-values {
+    .plr-sm-#{$key} {
+      @include paddingHorizontal($value);
+    }
+
+    .mlr-sm-#{$key} {
+      @include marginHorizontal($value);
+    }
   }
 }

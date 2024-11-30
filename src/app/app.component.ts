@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { SectionsContainerComponent } from '../sections-container/sections-container.component';
 import { HeaderComponent } from '../header/header.component';
-import { BaseLayoutComponent } from '../shared/layouts/base-layout/base-layout.component';
+import { BaseLayoutComponent } from '@shared/layouts';
 
 @Component({
   selector: 'app-root',
