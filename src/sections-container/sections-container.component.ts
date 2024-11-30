@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { SectionWithEntriesComponent } from '../shared/components/section-with-entries/section-with-entries.component';
-import { CommonModule } from '@angular/common';
+import { SectionWithEntriesComponent } from '@shared/components';
+import { SlicePipe } from '@angular/common';
 
 @Component({
   selector: 'app-sections-container',
   standalone: true,
-  imports: [SectionWithEntriesComponent, CommonModule],
+  imports: [SectionWithEntriesComponent, SlicePipe],
   templateUrl: './sections-container.component.html',
   styleUrl: './sections-container.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
