@@ -1,0 +1,11 @@
+@import "variables";
+
+.inversed {
+  color: $primary-gray;
+}
+
+@media (min-width: $smMin) {
+  .inversed {
+    color: white;
+  }
+}

@@ -1,17 +1,19 @@
-import { Directive, ElementRef, HostListener, Renderer2 } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  Output,
+  Renderer2,
+} from '@angular/core';
 
 @Directive({
   selector: '[appEditableText]',
   standalone: true,
 })
 export class EditableTextDirective {
-  private _isEditing = false;
-  private _overlay: HTMLElement = this.renderer.createElement('div');
-  private _isParagraphTarget = false;
-
-  constructor(private el: ElementRef, private renderer: Renderer2) {
-    this.renderer.setAttribute(this.el.nativeElement, 'tabindex', '0'); // Make the element focusable
-  }
+  @Output() finishEditing = new EventEmitter<void>();
+  @Output() cancelEditing = new EventEmitter<void>();
 
   @HostListener('click', ['$event']) onClick(event: KeyboardEvent) {
     this._isParagraphTarget = event.target instanceof HTMLParagraphElement;
@@ -44,9 +46,17 @@ export class EditableTextDirective {
         this.makeEditable();
       }
     } else if (event.key === 'Escape') {
+      event.preventDefault();
       this.cancelChanges();
       this.hideOverlay();
     }
+  }
+  private _isEditing = false;
+  private _overlay: HTMLElement = this.renderer.createElement('div');
+  private _isParagraphTarget = false;
+
+  constructor(private el: ElementRef, private renderer: Renderer2) {
+    this.renderer.setAttribute(this.el.nativeElement, 'tabindex', '0'); // Make the element focusable
   }
 
   private makeEditable() {
@@ -61,6 +71,7 @@ export class EditableTextDirective {
     this._isEditing = false;
     const element = this.el.nativeElement;
     this.renderer.removeAttribute(element, 'contenteditable');
+    this.finishEditing.emit();
   }
 
   private cancelChanges() {
@@ -68,6 +79,7 @@ export class EditableTextDirective {
     const element = this.el.nativeElement;
     this.renderer.removeAttribute(element, 'contenteditable');
     this.renderer.setProperty(element, 'innerText', element.innerText); // Revert to original text
+    this.cancelEditing.emit();
   }
 
   private showOverlay() {
