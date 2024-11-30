@@ -1,0 +1,2 @@
+bash ./git-hooks/excluded-focused-fe-test-validator.sh && 
+node ./git-hooks/soc-compliance.js

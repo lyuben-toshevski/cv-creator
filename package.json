@@ -11,7 +11,8 @@
     "package:win": "npm run build && cross-var electron-packager dist/cv-creator/browser $npm_package_name-$npm_package_version --out=packages --platform=win32 --arch=all --overwrite ",
     "package:linux": "npm run build && cross-var electron-packager dist/cv-creator/browser $npm_package_name-$npm_package_version --out=packages --platform=linux --arch=all --overwrite ",
     "package:osx": "npm run build && cross-var electron-packager dist/cv-creator/browser $npm_package_name-$npm_package_version --out=packages --platform=darwin --arch=all --overwrite ",
-    "package:all": "npm run build && cross-var electron-packager dist/cv-creator/browser $npm_package_name-$npm_package_version --out=packages --all --arch=all --overwrite "
+    "package:all": "npm run build && cross-var electron-packager dist/cv-creator/browser $npm_package_name-$npm_package_version --out=packages --all --arch=all --overwrite ",
+    "prepare": "husky"
   },
   "main": "main.js",
   "private": true,
@@ -40,12 +41,14 @@
     "cross-var": "^1.1.0",
     "electron": "^33.2.0",
     "electron-packager": "^17.1.2",
+    "husky": "^9.1.7",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "shelljs": "^0.8.5",
     "typescript": "~5.4.2"
   }
 }
