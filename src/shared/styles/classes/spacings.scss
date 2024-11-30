@@ -1,7 +1,7 @@
 @import "mixins";
 @import "variables";
 
-// Generate classes for the padding dynamically
+// Generate classes dynamically
 @each $key, $value in $spacing-values {
   // Paddings
   .p-#{$key} {
@@ -62,6 +62,11 @@
   }
   .mlr-#{key} {
     @include marginHorizontal($value);
+  }
+
+  // Radius
+  .radius-#{$key} {
+    border-radius: $value;
   }
 }
 

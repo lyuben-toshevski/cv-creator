@@ -1,4 +1,35 @@
 @import "variables";
+
+// Backgrounds
 .background-blue-fog {
   background-color: $blue-fog;
+}
+
+.background-powder-green {
+  background-color: $powder-green;
+}
+
+.background-dirty-white {
+  background-color: $dirty-white;
+}
+
+.background-primary-error {
+  background-color: $primary-error;
+}
+
+// Colors
+.color-primary-gray {
+  color: $primary-gray;
+}
+
+.color-primary-white {
+  color: $primary-white;
+}
+
+.color-powder-green {
+  color: $powder-green;
+}
+
+.color-blue-fog {
+  color: $blue-fog;
 }
