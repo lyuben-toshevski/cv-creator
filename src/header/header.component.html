@@ -1,24 +1,74 @@
-<div class="row">
-  <div class="col-xs-8 p-0">
-    <div class="mlr-9" appEditableText>
-      <h1 class="uppercase">LYUBEN TOSHEVSKI</h1>
-      <p>Software Developer</p>
-      <div class="contacts">
-        <div>
-          <p>+131123123</p>
+<ng-container *ngIf="isMobile$ | async; else desktopView">
+  <ng-template [ngTemplateOutlet]="mobileView"></ng-template>
+</ng-container>
+
+<ng-template #desktopView>
+  <div class="row">
+    <div class="col-sm-8 start-xs p-0">
+      <div
+        class="mlr-9"
+        appEditableText
+        (finishEditing)="onFinishEditing()"
+        (cancelEditing)="onCancelEditing()"
+      >
+        <h1
+          class="uppercase"
+          appTextContentChange
+          (textChange)="onInput($event, info.primary[0].key, InfoType.PRIMARY)"
+        >
+          {{ info.primary[0].value }}
+        </h1>
+        <p
+          appTextContentChange
+          (textChange)="onInput($event, info.primary[1].key, InfoType.PRIMARY)"
+        >
+          {{ info.primary[1].value }}
+        </p>
+        <ng-template [ngTemplateOutlet]="contacts"></ng-template>
+      </div>
+    </div>
+    <div class="image-holder col-sm-4 p-0">
+      <ng-template [ngTemplateOutlet]="image"></ng-template>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #mobileView>
+  <div class="row">
+    <div class="col-xs-12 start-xs p-0">
+      <div class="mlr-4">
+        <div class="image-holder p-0 mb-3">
+          <ng-template [ngTemplateOutlet]="image"></ng-template>
         </div>
-        <div>
-          <p>lyuben.toshevski&#64;gmail.com</p>
-        </div>
-        <div>
-          <p>Remote / Bulgaria</p>
-        </div>
+        @for (entry of info.primary; track $index) {
+        <h2>{{ entry.label }}</h2>
+        <p
+          appEditableText
+          (finishEditing)="onFinishEditing()"
+          (cancelEditing)="onCancelEditing()"
+          appTextContentChange
+          (textChange)="onInput($event, entry.key, InfoType.PRIMARY)"
+        >
+          {{ entry.value }}
+        </p>
+        }
+        <ng-template [ngTemplateOutlet]="contacts"></ng-template>
       </div>
     </div>
   </div>
-  <div class="image-holder col-xs-4 p-0">
-    <div class="plr-9">
-      <img src="assets/images/profile.jpg" alt="Profile picture" />
-    </div>
+</ng-template>
+
+<ng-template #image>
+  <div class="plr-9">
+    <img src="assets/images/profile.jpg" alt="Profile picture" />
   </div>
-</div>
+</ng-template>
+
+<ng-template #contacts>
+  <app-contacts
+    [contacts]="info.secondary"
+    (finishEditing)="onFinishEditing()"
+    (cancelEditing)="onCancelEditing()"
+    (contactsChange)="onInput($event.value, $event.key, InfoType.SECONDARY)"
+  ></app-contacts>
+</ng-template>

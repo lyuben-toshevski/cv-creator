@@ -1,12 +1,11 @@
-import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { EditableTextDirective } from '../../directives/editable-text.directive';
+import { EditableTextDirective } from '@shared/directives';
 import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
   selector: 'app-section-with-entries',
   standalone: true,
-  imports: [CommonModule, EditableTextDirective, MatDividerModule],
+  imports: [EditableTextDirective, MatDividerModule],
   templateUrl: './section-with-entries.component.html',
   styleUrl: './section-with-entries.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

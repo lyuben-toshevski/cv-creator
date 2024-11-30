@@ -179,6 +179,11 @@
   flex-wrap: wrap;
 }
 
+.grow {
+  flex-grow: 1;
+  flex-basis: 100%;
+}
+
 .row {
   display: flex !important;
   flex-direction: row;
