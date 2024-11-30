@@ -18,16 +18,17 @@
         >
           {{ info.primary[0].value }}
         </h1>
-        <p
+        <h3
           appTextContentChange
           (textChange)="onInput($event, info.primary[1].key, InfoType.PRIMARY)"
+          class="color-blue-fog"
         >
           {{ info.primary[1].value }}
-        </p>
+        </h3>
         <ng-template [ngTemplateOutlet]="contacts"></ng-template>
       </div>
     </div>
-    <div class="image-holder col-sm-4 p-0">
+    <div *ngIf="showImagePicker" class="image-holder col-sm-4 p-0">
       <ng-template [ngTemplateOutlet]="image"></ng-template>
     </div>
   </div>
@@ -37,7 +38,7 @@
   <div class="row">
     <div class="col-xs-12 start-xs p-0">
       <div class="mlr-4">
-        <div class="image-holder p-0 mb-3">
+        <div *ngIf="showImagePicker" class="image-holder p-0 mb-3">
           <ng-template [ngTemplateOutlet]="image"></ng-template>
         </div>
         @for (entry of info.primary; track $index) {
@@ -59,9 +60,7 @@
 </ng-template>
 
 <ng-template #image>
-  <div class="plr-9">
-    <img src="assets/images/profile.jpg" alt="Profile picture" />
-  </div>
+  <app-image-picker (imageRemoved)="showImagePicker = false"></app-image-picker>
 </ng-template>
 
 <ng-template #contacts>
