@@ -1,7 +1,8 @@
 @import "variables";
+@import "functions";
 
 p {
-  padding: map-get($map: $spacing-values, $key: 4);
+  padding: spacing(4);
   border: 2px solid $primary-gray;
   border-radius: 8px;
 }

@@ -1,0 +1,8 @@
+@import "functions";
+
+// Generate classes for the padding dynamically
+@each $key, $value in $font-sizes {
+  .font-#{$key} {
+    font-size: fontSize($key);
+  }
+}

@@ -17,6 +17,7 @@ export class EditableTextDirective {
 
   @HostListener('click', ['$event']) onClick(event: KeyboardEvent) {
     this._isParagraphTarget = event.target instanceof HTMLParagraphElement;
+    this._eventTarget = event.target as HTMLElement;
     if (!this._isEditing) {
       this.makeEditable();
     }
@@ -38,6 +39,8 @@ export class EditableTextDirective {
   @HostListener('keydown', ['$event']) onKeyDown(event: KeyboardEvent) {
     // Allow Enter key only for paragraph elements
     if (event.key === 'Enter') {
+      console.log(this._isParagraphTarget);
+
       if (this._isEditing && !this._isParagraphTarget) {
         event.preventDefault();
         this.el.nativeElement.blur();
@@ -49,11 +52,19 @@ export class EditableTextDirective {
       event.preventDefault();
       this.cancelChanges();
       this.hideOverlay();
+    } else if (event.key === 'Backspace') {
+      // Bug
+      console.log(this._eventTarget.innerText.split('\n'));
+
+      if (this._eventTarget.innerText.trim() === '' || this.isCaretAtStart()) {
+        event.preventDefault();
+      }
     }
   }
   private _isEditing = false;
   private _overlay: HTMLElement = this.renderer.createElement('div');
   private _isParagraphTarget = false;
+  private _eventTarget: HTMLElement = {} as HTMLElement;
 
   constructor(private el: ElementRef, private renderer: Renderer2) {
     this.renderer.setAttribute(this.el.nativeElement, 'tabindex', '0'); // Make the element focusable
@@ -98,5 +109,14 @@ export class EditableTextDirective {
     }
     // Remove focused class from the editable element
     this.renderer.removeClass(this.el.nativeElement, 'focused');
+  }
+
+  private isCaretAtStart(): boolean {
+    const selection = window.getSelection();
+    if (selection?.rangeCount && selection.rangeCount > 0) {
+      const range = selection.getRangeAt(0);
+      return range.startOffset === 1 && range.endOffset === 1;
+    }
+    return false;
   }
 }

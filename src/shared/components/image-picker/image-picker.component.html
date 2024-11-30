@@ -1,0 +1,27 @@
+<div class="flex middle-xs start-xs center-sm">
+  <input
+    #fileInput
+    class="hidden"
+    type="file"
+    (change)="onFileSelected($event)"
+    accept="image/*"
+  />
+
+  <div class="thumbnail-container">
+    <img [src]="thumbnail" class="background-dirty-white circle thumbnail" />
+    <div class="thumbnail-controls-container row-nowrap between-xs">
+      <button mat-fab class="mr-2" (click)="fileInput.click()">
+        <mat-icon
+          class="color-primary-white font-xx-large middle-xs center-xs flex"
+          >perm_media</mat-icon
+        >
+      </button>
+      <button mat-fab color="warn" (click)="imageRemoved.emit()">
+        <mat-icon
+          class="color-primary-white font-xx-large middle-xs center-xs flex"
+          >delete</mat-icon
+        >
+      </button>
+    </div>
+  </div>
+</div>

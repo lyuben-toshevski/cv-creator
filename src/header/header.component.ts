@@ -7,6 +7,7 @@ import { AsyncPipe, NgIf, NgTemplateOutlet } from '@angular/common';
 import { Observable } from 'rxjs';
 import { IS_MOBILE_TOKEN } from '@shared/injection-tokens';
 import { ContactsComponent } from './components/contacts/contacts.component';
+import { ImagePickerComponent } from '@shared/components';
 
 enum InfoType {
   PRIMARY = 'primary',
@@ -19,6 +20,7 @@ enum InfoType {
     AsyncPipe,
     ContactsComponent,
     EditableTextDirective,
+    ImagePickerComponent,
     NgIf,
     NgTemplateOutlet,
     TextContentChangeDirective,
@@ -57,6 +59,8 @@ export class HeaderComponent {
       },
     ],
   };
+
+  showImagePicker = true;
 
   private _updatedInfo = { ...this.info };
 

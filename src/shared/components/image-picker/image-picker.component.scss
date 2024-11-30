@@ -1,0 +1,48 @@
+@import "variables";
+@import "functions";
+
+:host {
+  display: block;
+}
+
+.thumbnail {
+  & {
+    width: 100px;
+    height: 100px;
+    margin-right: spacing(3);
+    object-fit: cover;
+    border: 1px solid #ccc;
+  }
+  &-container {
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media (min-width: $smMin) {
+  .thumbnail {
+    & {
+      width: 200px;
+      height: 200px;
+      margin-right: 0;
+    }
+    &-container {
+      margin-top: 10px;
+      position: relative;
+      cursor: pointer;
+
+      &:hover .thumbnail-controls-container {
+        opacity: 1;
+      }
+
+      .thumbnail-controls-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+    }
+  }
+}
