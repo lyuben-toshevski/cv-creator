@@ -5,14 +5,19 @@
 <ng-template #desktopView>
   <div class="row between-xs">
     @for (contact of contacts; track $index) {
-    <p
-      appTextContentChange
-      (textChange)="contactsChange.emit({ key: contact.key, value: $event })"
-      class="mr-2"
+    <div
+      class="row-nowrap mr-2 mb-2 middle-xs"
       [ngClass]="{ 'last-xs grow': contact.key === 'location' }"
     >
-      {{ contact.value }}
-    </p>
+      <mat-icon class="color-dark-gray mr-1">{{ contact.icon }}</mat-icon>
+      <p
+        appTextContentChange
+        (textChange)="contactsChange.emit({ key: contact.key, value: $event })"
+        class="m-0"
+      >
+        {{ contact.value }}
+      </p>
+    </div>
     }
   </div>
 </ng-template>

@@ -1,9 +1,10 @@
 <div class="row">
   <div class="col-xs-12 col-sm-8 p-0">
-    <div class="plr-4 plr-sm-9">
+    <div class="plr-4 plr-sm-8">
       @for (section of sections | slice:0:sectionsHalf; track $index) {
       <app-section-with-entries
-        class="mb-8"
+        appEditableText
+        class="mb-8 p-sm-8"
         [title]="section.title"
         [subtitle]="section.subtitle"
         [content]="section.content"
@@ -12,10 +13,11 @@
     </div>
   </div>
   <div class="col-xs-12 col-sm-4 p-0">
-    <div class="plr-4 plr-sm-9">
+    <div class="plr-4 plr-sm-8">
       @for (section of sections|slice:sectionsHalf; track $index) {
       <app-section-with-entries
-        class="inversed"
+        appEditableText
+        class="mb-8 p-sm-8 inversed"
         [title]="section.title"
         [subtitle]="section.subtitle"
         [content]="section.content"

@@ -7,6 +7,7 @@ import {
   Input,
   Output,
 } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 import {
   EditableTextDirective,
   TextContentChangeDirective,
@@ -21,6 +22,7 @@ import { Observable } from 'rxjs';
   imports: [
     AsyncPipe,
     EditableTextDirective,
+    MatIconModule,
     NgClass,
     NgIf,
     NgTemplateOutlet,

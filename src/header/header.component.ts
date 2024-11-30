@@ -45,17 +45,29 @@ export class HeaderComponent {
       },
     ],
     [InfoType.SECONDARY]: [
-      { key: 'phone', value: '+35988723435', label: 'Phone' },
+      {
+        key: 'phone',
+        value: '+35988723435',
+        label: 'Phone',
+        icon: 'phone_enabled',
+      },
       {
         key: 'email',
         value: 'toshevski@gmail.com',
         label: 'Email',
+        icon: 'alternate_email',
       },
-      { key: 'location', value: 'Remote', label: 'Location' },
+      {
+        key: 'location',
+        value: 'Remote',
+        label: 'Location',
+        icon: 'location_on',
+      },
       {
         key: 'portfolio',
         value: 'linkedin.com',
         label: 'Portfolio',
+        icon: 'link',
       },
     ],
   };
