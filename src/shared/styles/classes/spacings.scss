@@ -1,6 +1,16 @@
 @import "mixins";
 @import "variables";
 
+/* TODO
+  Create all padding and margin classes dynamically without repeating code. 
+  Create margin and padding maps, create breakpoints map. 
+  Then for each breakpoint, for each margin and padding side (top, right, bottom, left), for each spacing value, create a class.
+  Try having the mixins for the padding and margin as the values of the margin and padding maps.
+*/
+$margin-values: (
+  ml: marginLeft,
+);
+
 // Generate classes dynamically
 @each $key, $value in $spacing-values {
   // Paddings
@@ -73,6 +83,7 @@
 @media (min-width: $smMin) {
   @each $key, $value in $spacing-values {
     // Paddings
+
     .p-sm-#{$key} {
       @include padding($value);
     }
