@@ -1,0 +1,16 @@
+@import "colors";
+
+body {
+  --mat-menu-container-color: white;
+  --mat-sidenav-container-background-color: white;
+  --mat-sidenav-content-background-color: transparent;
+  --mat-toolbar-container-background-color: white;
+  --mat-toolbar-container-text-color: #{$primary-gray};
+  --mdc-icon-button-icon-color: #{$primary-gray};
+  --mat-icon-button-state-layer-color: #{$primary-gray};
+  --mdc-list-list-item-hover-state-layer-color: #{$primary-gray};
+}
+
+.mat-ripple-element {
+  background-color: rgba($light-gray, 0.1);
+}

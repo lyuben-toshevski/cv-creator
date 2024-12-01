@@ -8,6 +8,7 @@ import {
   Output,
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+import { TextWithIconComponent } from '@shared/components/text-with-icon/text-with-icon.component';
 import {
   EditableTextDirective,
   TextContentChangeDirective,
@@ -27,6 +28,7 @@ import { Observable } from 'rxjs';
     NgIf,
     NgTemplateOutlet,
     TextContentChangeDirective,
+    TextWithIconComponent,
   ],
   templateUrl: './contacts.component.html',
   styleUrl: './contacts.component.scss',

@@ -1,0 +1,10 @@
+<div class="row-nowrap middle-xs">
+  <mat-icon class="mr-1 icon">{{ icon }}</mat-icon>
+  <p
+    appTextContentChange
+    class="m-0 text"
+    (textChange)="textChange.emit($event)"
+  >
+    {{ text }}
+  </p>
+</div>

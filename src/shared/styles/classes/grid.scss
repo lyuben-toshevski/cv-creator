@@ -365,6 +365,23 @@
   align-items: stretch;
 }
 
+/* TODO
+  refactor this code to use functions, mixins and variables
+  add the self classes for all the variants and breakpoints
+*/
+
+.self-top-xs {
+  align-self: flex-start;
+}
+
+.self-middle-xs {
+  align-self: center;
+}
+
+.self-bottom-xs {
+  align-self: flex-end;
+}
+
 .around-xs {
   justify-content: space-around;
 }

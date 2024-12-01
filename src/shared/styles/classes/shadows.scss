@@ -1,0 +1,13 @@
+@import "variables";
+
+.shadow-small {
+  box-shadow: $shadow-small !important;
+}
+
+.shadow-medium {
+  box-shadow: $shadow-medium !important;
+}
+
+.shadow-main {
+  box-shadow: $shadow-main !important;
+}
