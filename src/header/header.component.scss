@@ -1,15 +1,16 @@
 @import "variables";
-@import "functions";
 
-p {
-  padding: spacing(4);
-  border: 2px solid $primary-gray;
-  border-radius: 8px;
+:host {
+  display: block;
+  width: 100%;
+  height: $header-height;
 }
 
-@media (min-width: $smMin) {
-  p {
-    padding: 0;
-    border: none;
-  }
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: $header-height;
+  z-index: 9999;
 }
