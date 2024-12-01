@@ -1,6 +1,13 @@
 <div class="wrapper">
-  <header></header>
-  <main class="p-9">
-    <app-cv-container></app-cv-container>
+  <header>
+    <app-header></app-header>
+  </header>
+  <aside *ngIf="!(isMobile$ | async)">
+    <app-sidebar></app-sidebar>
+  </aside>
+  <main class="p-7 flex center-xs">
+    <app-cv-container
+      class="shadow-main col-sm-10 col-lg-8 p-0"
+    ></app-cv-container>
   </main>
 </div>

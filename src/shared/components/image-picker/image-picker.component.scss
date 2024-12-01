@@ -30,8 +30,13 @@
       margin-top: 10px;
       position: relative;
 
-      &:hover .thumbnail-controls-container {
-        opacity: 1;
+      &:hover {
+        .thumbnail {
+          filter: brightness(0.8);
+        }
+        .thumbnail-controls-container {
+          opacity: 1;
+        }
       }
 
       .thumbnail-controls-container {

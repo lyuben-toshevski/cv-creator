@@ -7,14 +7,6 @@
   }
 
   .border {
-    border: 1px solid $light-gray;
-  }
-}
-
-@media (min-width: $smMin) {
-  :host(.inversed) {
-    .border {
-      border-color: inherit;
-    }
+    border: 1px solid var(--divider-color, $light-gray);
   }
 }

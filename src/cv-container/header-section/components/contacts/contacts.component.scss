@@ -1,6 +1,11 @@
 @import "variables";
 @import "functions";
 
+.icon-with-text {
+  --icon-color: red;
+  --icon-opacity: 0.5;
+}
+
 p {
   padding: spacing(4);
   border: 2px solid $primary-gray;

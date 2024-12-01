@@ -8,8 +8,9 @@
   color: $primary-gray;
 }
 
-@media (min-width: $smMin) {
+@media (min-width: $mdMin) {
   .inversed {
     color: white;
+    --divider-color: white;
   }
 }
