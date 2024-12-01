@@ -1,21 +1,12 @@
-import { Component } from '@angular/core';
-import { SectionsContainerComponent } from '../sections-container/sections-container.component';
-import { HeaderComponent } from '../header/header.component';
-import { BaseLayoutComponent } from '@shared/layouts';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { CvContainerComponent } from 'src/cv-container/cv-container.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    BaseLayoutComponent,
-    HeaderComponent,
-    SectionsContainerComponent,
-    HeaderComponent,
-    BaseLayoutComponent,
-  ],
+  imports: [CvContainerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {
-  title = 'cv-creator';
-}
+export class AppComponent {}

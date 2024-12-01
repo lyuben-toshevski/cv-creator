@@ -1,1 +1,1 @@
-export * from './base-layout/base-layout.component';
+export * from './two-columns-layout/two-columns-layout.component';

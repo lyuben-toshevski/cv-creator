@@ -1,0 +1,40 @@
+<ng-container *ngIf="isMobile$ | async; else desktopView">
+  <ng-template [ngTemplateOutlet]="mobileView"></ng-template>
+</ng-container>
+
+<ng-template #desktopView>
+  <div class="row between-xs">
+    @for (contact of contacts; track $index) {
+    <div
+      class="row-nowrap mr-2 mb-2 middle-xs"
+      [ngClass]="{ 'last-xs grow': contact.key === 'location' }"
+    >
+      <mat-icon class="color-dark-gray mr-1">{{ contact.icon }}</mat-icon>
+      <p
+        appTextContentChange
+        (textChange)="contactsChange.emit({ key: contact.key, value: $event })"
+        class="m-0"
+      >
+        {{ contact.value }}
+      </p>
+    </div>
+    }
+  </div>
+</ng-template>
+
+<ng-template #mobileView>
+  <div class="contacts">
+    @for (contact of contacts; track $index) {
+    <h2>{{ contact.label }}</h2>
+    <p
+      appEditableText
+      (finishEditing)="finishEditing.emit()"
+      (cancelEditing)="cancelEditing.emit()"
+      appTextContentChange
+      (textChange)="contactsChange.emit({ key: contact.key, value: $event })"
+    >
+      {{ contact.value }}
+    </p>
+    }
+  </div>
+</ng-template>
