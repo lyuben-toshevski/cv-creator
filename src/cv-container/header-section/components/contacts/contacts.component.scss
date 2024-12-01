@@ -1,0 +1,15 @@
+@import "variables";
+@import "functions";
+
+p {
+  padding: spacing(4);
+  border: 2px solid $primary-gray;
+  border-radius: 8px;
+}
+
+@media (min-width: $smMin) {
+  p {
+    padding: 0;
+    border: none;
+  }
+}

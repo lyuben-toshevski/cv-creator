@@ -1,8 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+@import "variables/index";
+@import "classes/index";
+@import "functions/index";
+@import "mixins/index";
 
 // The z-index puts all elements above the overlay so that the focus/edit can move freely
-body * {
-  z-index: 1;
+body {
+  & * {
+    z-index: 1;
+  }
+  background-color: $light-gray;
 }
 
 html,
@@ -28,8 +35,3 @@ body {
     background-color: rgba(124, 168, 230, 0.79);
   }
 }
-
-@import "variables/index";
-@import "classes/index";
-@import "functions/index";
-@import "mixins/index";
