@@ -1,3 +1,18 @@
 <div class="container">
-  <mat-toolbar class="h-100-p shadow-medium">Header</mat-toolbar>
+  <mat-toolbar class="h-100-p shadow-medium">
+    <div class="flex middle-xs h-100-p w-100-p">
+      <div class="flex middle-xs mr-9">
+        <img src="assets/images/logo.png" alt="logo" class="logo" />
+        <h1 class="m-0 ml-2">CV Creator</h1>
+      </div>
+      <div class="flex middle-xs">
+        <button mat-button routerLink="/" routerLinkActive="active">
+          Home
+        </button>
+        <button mat-button routerLink="/resume" routerLinkActive="active">
+          Resume
+        </button>
+      </div>
+    </div>
+  </mat-toolbar>
 </div>

@@ -1,0 +1,10 @@
+@import "functions";
+
+:host {
+  display: block;
+}
+
+.preview-button {
+  position: absolute;
+  left: spacing(3);
+}

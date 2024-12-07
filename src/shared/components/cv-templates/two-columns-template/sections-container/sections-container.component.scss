@@ -1,0 +1,16 @@
+@import "variables";
+
+:host {
+  display: block;
+}
+
+.inversed {
+  color: $primary-gray;
+}
+
+@media (min-width: $mdMin) {
+  .inversed {
+    color: white;
+    --divider-color: white;
+  }
+}
