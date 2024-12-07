@@ -2,23 +2,29 @@
   <header>
     <app-header></app-header>
   </header>
-  <aside *ngIf="!(isMobile$ | async)">
-    <app-sidebar (download)="exportToPdf()"></app-sidebar>
-  </aside>
-  <main class="p-7 flex center-xs">
-    <app-cv-container
-      #cvContainer
-      class="shadow-main col-sm-10 col-lg-8 p-0"
-    ></app-cv-container>
+  <app-cv-templates-drawer>
+    <aside *ngIf="!(isMobile$ | async)">
+      <app-sidebar
+        (download)="exportToPdf()"
+        (showTemplates)="showTemplates()"
+      ></app-sidebar>
+    </aside>
 
-    <div class="pos-relative">
-      <button
-        mat-icon-button
-        class="preview-button flex center-xs middle-xs"
-        (click)="generatePDFPreview()"
-      >
-        <mat-icon>visibility</mat-icon>
-      </button>
-    </div>
-  </main>
+    <main class="p-7 flex center-xs">
+      <app-cv-container
+        #cvContainer
+        class="shadow-main col-sm-10 col-lg-8 p-0"
+      ></app-cv-container>
+
+      <div class="pos-relative">
+        <button
+          mat-icon-button
+          class="preview-button flex center-xs middle-xs"
+          (click)="generatePDFPreview()"
+        >
+          <mat-icon>visibility</mat-icon>
+        </button>
+      </div>
+    </main>
+  </app-cv-templates-drawer>
 </div>
