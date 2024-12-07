@@ -8,8 +8,11 @@ import {
 } from '@angular/core';
 import { MatRipple } from '@angular/material/core';
 import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
+import { Store } from '@ngrx/store';
 import { TemplateType } from '@shared/enums';
 import { CanvasService, TemplateService } from '@shared/services';
+import { selectTemplate } from '@store/cv/cv.actions';
+import { CvState } from '@store/cv/cv.reducer';
 
 @Component({
   selector: 'app-cv-templates-drawer',
@@ -35,6 +38,7 @@ export class CvTemplatesDrawerComponent implements AfterViewInit {
   constructor(
     private _canvasService: CanvasService,
     private _cdr: ChangeDetectorRef,
+    private _store: Store<CvState>,
     private _templateService: TemplateService
   ) {}
 
@@ -43,7 +47,9 @@ export class CvTemplatesDrawerComponent implements AfterViewInit {
   }
 
   templateSelect(index: number): void {
-    this._templateService.selectTemplate(this._views[index].type);
+    this._store.dispatch(
+      selectTemplate({ selectedTemplateType: this._views[index].type })
+    );
     this.drawer.close();
   }
 

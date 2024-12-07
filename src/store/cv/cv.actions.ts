@@ -1,5 +1,6 @@
+import { Type } from '@angular/core';
 import { createAction, props } from '@ngrx/store';
-import { SectionType } from '@shared/enums';
+import { SectionType, TemplateType } from '@shared/enums';
 import { SectionData } from '@shared/interfaces';
 import { CvData } from '@shared/models';
 
@@ -7,7 +8,7 @@ export const loadCv = createAction('[CV] Load Cv');
 
 export const loadCvSuccess = createAction(
   '[CV] Load Cv Success',
-  props<{ cv: CvData }>()
+  props<{ cv: CvData; selectedTemplate: Type<unknown> }>()
 );
 
 export const loadCvFailure = createAction(
@@ -18,4 +19,14 @@ export const loadCvFailure = createAction(
 export const updateCv = createAction(
   '[CV] Update Cv',
   props<{ sectionType: SectionType; data: SectionData }>()
+);
+
+export const selectTemplate = createAction(
+  '[CV] Select Template',
+  props<{ selectedTemplateType: TemplateType }>()
+);
+
+export const selectTemplateSuccess = createAction(
+  '[CV] Select Template Success',
+  props<{ selectedTemplate: Type<unknown> }>()
 );

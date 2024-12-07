@@ -90,7 +90,7 @@ export class CvService {
   private _cvData$ = new BehaviorSubject<CvData>(new CvData(initialData));
 
   getCvData(): Observable<CvData> {
-    return this._cvData$.pipe(delay(1000));
+    return of(this._cvData$.getValue()).pipe(delay(1000));
   }
 
   updateCvData(sectionType: SectionType, payload: SectionData): void {

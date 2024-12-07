@@ -3,17 +3,20 @@ import { CvData } from '@shared/models';
 import { initialData } from '@shared/services';
 
 import * as CvActions from './cv.actions';
+import { Type } from '@angular/core';
 
 export interface CvState {
   cv: CvData;
   error: any | null;
   loading: boolean;
+  selectedTemplate: Type<unknown> | null;
 }
 
 export const initialState: CvState = {
   cv: new CvData(initialData),
   error: null,
   loading: false,
+  selectedTemplate: null,
 };
 
 export const cvReducer = createReducer(
@@ -22,9 +25,10 @@ export const cvReducer = createReducer(
     ...state,
     loading: true,
   })),
-  on(CvActions.loadCvSuccess, (state, { cv }) => ({
+  on(CvActions.loadCvSuccess, (state, { cv, selectedTemplate }) => ({
     ...state,
     cv,
+    selectedTemplate,
     error: null,
     loading: false,
   })),
@@ -39,5 +43,9 @@ export const cvReducer = createReducer(
       ...state.cv,
       [sectionType]: data,
     },
+  })),
+  on(CvActions.selectTemplateSuccess, (state, { selectedTemplate }) => ({
+    ...state,
+    selectedTemplate,
   }))
 );
