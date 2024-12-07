@@ -2,7 +2,6 @@ import { AsyncPipe, NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  ComponentRef,
   ElementRef,
   Inject,
   ViewChild,
@@ -44,8 +43,6 @@ export class AppComponent {
   @ViewChild('cvContainer', { static: false, read: ElementRef })
   private _cvContainer!: ElementRef;
 
-  selectedTemplate!: ComponentRef<any>;
-
   constructor(
     @Inject(IS_MOBILE_TOKEN) public isMobile$: Observable<boolean>,
     private _canvasService: CanvasService,
@@ -61,12 +58,6 @@ export class AppComponent {
       width: '100%',
       panelClass: 'overflow-scroll',
     });
-  }
-
-  selectTemplate(template: ComponentRef<any>): void {
-    console.log('template', template);
-
-    this.selectedTemplate = template;
   }
 
   showTemplates() {

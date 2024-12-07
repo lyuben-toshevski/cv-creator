@@ -11,7 +11,7 @@
         <div
           class="template-item flex shadow-wrap hover cursor-pointer"
           matRipple
-          (click)="templateSelect(template.componentRef)"
+          (click)="templateSelect($index)"
         >
           <img [src]="template.base64ImageString" width="100%" />
         </div>

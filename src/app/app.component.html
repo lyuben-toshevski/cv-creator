@@ -2,7 +2,7 @@
   <header>
     <app-header></app-header>
   </header>
-  <app-cv-templates-drawer (selectTemplate)="selectTemplate($event)">
+  <app-cv-templates-drawer>
     <aside *ngIf="!(isMobile$ | async)">
       <app-sidebar
         (download)="exportToPdf()"
@@ -13,11 +13,10 @@
     <main class="p-7 flex center-xs">
       <app-cv-container
         #cvContainer
-        [template]="selectedTemplate"
         class="shadow-main col-sm-10 col-lg-8 p-0"
       ></app-cv-container>
 
-      <div *ngIf="selectedTemplate" class="pos-relative">
+      <div class="pos-relative">
         <button
           mat-icon-button
           class="preview-button flex center-xs middle-xs"

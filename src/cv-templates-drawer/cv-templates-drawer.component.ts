@@ -3,16 +3,13 @@ import {
   AfterViewInit,
   ChangeDetectorRef,
   Component,
-  ComponentRef,
-  EventEmitter,
-  Output,
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
 import { MatRipple } from '@angular/material/core';
 import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
-import { CanvasService } from '@shared/services';
-import { TwoColumnsTemplateComponent } from 'src/cv-templates/two-columns-template/two-columns-template.component';
+import { TemplateType } from '@shared/enums';
+import { CanvasService, TemplateService } from '@shared/services';
 
 @Component({
   selector: 'app-cv-templates-drawer',
@@ -22,8 +19,6 @@ import { TwoColumnsTemplateComponent } from 'src/cv-templates/two-columns-templa
   styleUrl: './cv-templates-drawer.component.scss',
 })
 export class CvTemplatesDrawerComponent implements AfterViewInit {
-  @Output() selectTemplate = new EventEmitter<ComponentRef<any>>();
-
   @ViewChild('drawer', { static: false })
   public drawer!: MatDrawer;
 
@@ -31,26 +26,24 @@ export class CvTemplatesDrawerComponent implements AfterViewInit {
   private _dynamicComponent!: ViewContainerRef;
 
   templates: Array<{
-    componentRef: ComponentRef<any>;
     base64ImageString: string;
     title: string;
   }> = [];
 
-  private _views = [
-    { component: TwoColumnsTemplateComponent, title: 'Two Columns' },
-  ];
+  private _views = [{ type: TemplateType.TWO_COLUMNS, title: 'Two Columns' }];
 
   constructor(
     private _canvasService: CanvasService,
-    private _cdr: ChangeDetectorRef
+    private _cdr: ChangeDetectorRef,
+    private _templateService: TemplateService
   ) {}
 
   ngAfterViewInit(): void {
     this._generateTemplates();
   }
 
-  templateSelect(component: ComponentRef<any>): void {
-    this.selectTemplate.emit(component);
+  templateSelect(index: number): void {
+    this._templateService.selectTemplate(this._views[index].type);
     this.drawer.close();
   }
 
@@ -68,7 +61,7 @@ export class CvTemplatesDrawerComponent implements AfterViewInit {
 
   private _generateSingleTemplate(template: any): void {
     const componentRef = this._dynamicComponent.createComponent(
-      template.component
+      this._templateService.getComponentByType(TemplateType.TWO_COLUMNS)
     );
 
     this._cdr.detectChanges();
@@ -78,7 +71,6 @@ export class CvTemplatesDrawerComponent implements AfterViewInit {
       .subscribe({
         next: (imageString) => {
           this.templates.push({
-            componentRef,
             base64ImageString: imageString,
             title: template.title,
           });
