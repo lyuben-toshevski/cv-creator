@@ -9,6 +9,8 @@ body {
   --mdc-icon-button-icon-color: #{$primary-gray};
   --mat-icon-button-state-layer-color: #{$primary-gray};
   --mdc-list-list-item-hover-state-layer-color: #{$primary-gray};
+  --mdc-dialog-container-color: rgba(26, 17, 41, 0.731);
+  --mat-dialog-container-max-width: "100%";
 }
 
 .mat-ripple-element {

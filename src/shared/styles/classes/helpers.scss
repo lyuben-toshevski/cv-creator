@@ -8,6 +8,22 @@
   display: none;
 }
 
+.overflow-scroll {
+  overflow: scroll;
+}
+
+.pos-absolute {
+  position: absolute !important;
+}
+
+.pos-relative {
+  position: relative !important;
+}
+
+.pos-fixed {
+  position: fixed !important;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }

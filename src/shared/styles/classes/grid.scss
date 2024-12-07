@@ -382,6 +382,18 @@
   align-self: flex-end;
 }
 
+.self-start-xs {
+  justify-self: flex-start;
+}
+
+.self-center-xs {
+  justify-self: center;
+}
+
+.self-end-xs {
+  justify-self: flex-end;
+}
+
 .around-xs {
   justify-content: space-around;
 }
