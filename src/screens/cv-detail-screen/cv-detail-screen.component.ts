@@ -4,6 +4,7 @@ import {
   Component,
   ElementRef,
   Inject,
+  OnInit,
   ViewChild,
 } from '@angular/core';
 import { CvContainerComponent } from './components/cv-container/cv-container.component';
@@ -15,6 +16,11 @@ import { CanvasService } from '@shared/services';
 import { Observable } from 'rxjs';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { Store } from '@ngrx/store';
+import { loadCv } from '@store/cv/cv.actions';
+import { CvState } from '@store/cv/cv.reducer';
+import { selectCvState } from '@store/cv/cv.selectors';
 
 @Component({
   selector: 'app-cv-detail-screen',
@@ -26,6 +32,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     MatDialogModule,
     MatIconModule,
+    MatProgressSpinnerModule,
     NgIf,
     SidebarComponent,
   ],
@@ -33,12 +40,14 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './cv-detail-screen.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CvDetailScreenComponent {
+export class CvDetailScreenComponent implements OnInit {
   @ViewChild(CvTemplatesDrawerComponent, { static: false })
   public cvTemplatesDrawer!: CvTemplatesDrawerComponent;
 
   @ViewChild('cvContainer', { static: false, read: ElementRef })
   private _cvContainer!: ElementRef;
+
+  cvState$!: Observable<CvState>;
 
   sidebarItems = [
     {
@@ -62,8 +71,14 @@ export class CvDetailScreenComponent {
   constructor(
     @Inject(IS_MOBILE_TOKEN) public isMobile$: Observable<boolean>,
     private _canvasService: CanvasService,
-    private _dialog: MatDialog
+    private _dialog: MatDialog,
+    private _store: Store<{ cv: CvState }>
   ) {}
+
+  ngOnInit(): void {
+    this._store.dispatch(loadCv());
+    this.cvState$ = this._store.select(selectCvState);
+  }
 
   exportToPdf(): void {
     this._canvasService.exportToPDF(this._cvContainer.nativeElement, `cv`);
