@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { SectionType } from '@shared/enums';
-import { ICvData, SectionData } from '@shared/interfaces';
+import { SectionData } from '@shared/interfaces';
 import { CvData } from '@shared/models';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, delay, Observable, of } from 'rxjs';
 
-const initialData = {
+export const initialData = {
   personalDetails: {
     name: 'John Doe',
     jobTitle: 'Software Engineer',
@@ -87,15 +87,13 @@ const initialData = {
 
 @Injectable({ providedIn: 'root' })
 export class CvService {
-  private _cvData$ = new BehaviorSubject<ICvData>(new CvData(initialData));
+  private _cvData$ = new BehaviorSubject<CvData>(new CvData(initialData));
 
-  getCvData(): Observable<ICvData> {
-    return this._cvData$.asObservable();
+  getCvData(): Observable<CvData> {
+    return of(this._cvData$.getValue()).pipe(delay(1000));
   }
 
   updateCvData(sectionType: SectionType, payload: SectionData): void {
-    console.log('qweq', sectionType, payload);
-
     this._cvData$.next({
       ...this._cvData$.value,
       [sectionType]: payload,

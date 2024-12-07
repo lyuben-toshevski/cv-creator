@@ -1,5 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AuthState } from '@store/auth/auth.reducer';
+import { selectUser } from '@store/auth/auth.selectors';
 import { HeaderComponent } from 'src/header/header.component';
 
 @Component({
@@ -10,4 +13,10 @@ import { HeaderComponent } from 'src/header/header.component';
   styleUrl: './app.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {}
+export class AppComponent {
+  constructor(private _store: Store<AuthState>) {
+    this._store.select(selectUser).subscribe((state) => {
+      console.log('users', state);
+    });
+  }
+}
