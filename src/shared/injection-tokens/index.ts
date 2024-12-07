@@ -1,2 +1,2 @@
 export * from './breakpoints.token';
-export * from './isMobile.token';
+export * from './is-mobile.token';

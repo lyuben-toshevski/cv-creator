@@ -1,6 +1,12 @@
 import { AsyncPipe, NgIf } from '@angular/common';
 import { BREAKPOINTS_TOKEN } from '@shared/injection-tokens';
-import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Inject,
+  Output,
+} from '@angular/core';
 import { IBreakpointStatus } from '@shared/interfaces';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -30,31 +36,32 @@ import { MatRippleModule } from '@angular/material/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidebarComponent {
+  @Output() rearrange = new EventEmitter<void>();
+  @Output() addSection = new EventEmitter<void>();
+  @Output() showTemplates = new EventEmitter<void>();
+  @Output() download = new EventEmitter<void>();
+
   sidebarItems = [
-    { icon: 'post_add', label: 'Add section', action: this.addSection },
-    { icon: 'swap_vert', label: 'Rearrange', action: this.rearrange },
-    { icon: 'view_comfy', label: 'Templates', action: this.showTemplates },
-    { icon: 'download', label: 'Download', action: this.download },
+    {
+      icon: 'post_add',
+      label: 'Add section',
+      action: () => this.addSection.emit(),
+    },
+    {
+      icon: 'swap_vert',
+      label: 'Rearrange',
+      action: () => this.rearrange.emit(),
+    },
+    {
+      icon: 'view_comfy',
+      label: 'Templates',
+      action: () => this.showTemplates.emit(),
+    },
+    { icon: 'download', label: 'Download', action: () => this.download.emit() },
   ];
 
   constructor(
     @Inject(BREAKPOINTS_TOKEN)
     public breakpoints$: Observable<IBreakpointStatus>
   ) {}
-
-  addSection() {
-    console.log('Add section');
-  }
-
-  rearrange() {
-    console.log('Rearrange');
-  }
-
-  showTemplates() {
-    console.log('Templates');
-  }
-
-  download() {
-    console.log('Download');
-  }
 }
