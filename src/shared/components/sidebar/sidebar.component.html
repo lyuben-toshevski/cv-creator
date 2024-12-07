@@ -1,0 +1,43 @@
+<mat-sidenav-container class="container">
+  <mat-sidenav
+    *ngIf="(breakpoints$ | async)?.LGMin; else hamburgerMenu"
+    #sidenav
+    mode="side"
+    opened
+    class="sidenav shadow-medium"
+    [fixedInViewport]="true"
+    [fixedTopGap]="98"
+    [fixedBottomGap]="32"
+  >
+    <mat-action-list class="p-0">
+      @for (item of sidebarItems; track $index) {
+      <mat-list-item class="sidebar-item" (click)="item.action()">
+        <app-text-with-icon
+          class="color-primary-gray font-large"
+          [text]="item.label"
+          [icon]="item.icon"
+        ></app-text-with-icon>
+      </mat-list-item>
+      }
+    </mat-action-list>
+  </mat-sidenav>
+  <ng-template #hamburgerMenu>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <mat-action-list>
+        @for (item of sidebarItems; track $index) {
+
+        <button mat-list-item class="sidebar-item" (click)="item.action()">
+          <app-text-with-icon
+            class="color-primary-gray font-large"
+            [text]="item.label"
+            [icon]="item.icon"
+          ></app-text-with-icon>
+        </button>
+        }
+      </mat-action-list>
+    </mat-menu>
+  </ng-template>
+</mat-sidenav-container>

@@ -19,9 +19,7 @@ export class TextContentChangeDirective implements AfterViewInit {
   ngAfterViewInit(): void {
     this.observer = new MutationObserver((mutations) => {
       mutations.forEach((m) => {
-        console.log(m);
-
-        // this.emitTextContent();
+        this.emitTextContent();
       });
     });
 

@@ -6,11 +6,10 @@
 
 // The z-index puts all elements above the overlay so that the focus/edit can move freely
 body {
+  background-color: $light-gray;
   & * {
     z-index: 1;
-    color: $primary-text-color;
   }
-  background-color: $light-gray;
 }
 
 html,
