@@ -1,0 +1,32 @@
+<app-cv-templates-drawer *ngIf="cvState$ | async as cvState">
+  <div
+    *ngIf="cvState.loading; else content"
+    class="flex center-xs middle-xs h-100-vh"
+  >
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </div>
+  <ng-template #content>
+    <div class="p-7 flex center-xs">
+      <app-sidebar
+        *ngIf="!(isMobile$ | async)"
+        [sidebarItems]="sidebarItems"
+        (download)="exportToPdf()"
+        (showTemplates)="showTemplates()"
+      ></app-sidebar>
+      <app-cv-container
+        #cvContainer
+        class="shadow-main col-sm-10 col-lg-8 p-0"
+      ></app-cv-container>
+
+      <div class="pos-relative">
+        <button
+          mat-icon-button
+          class="preview-button flex center-xs middle-xs"
+          (click)="generatePDFPreview()"
+        >
+          <mat-icon>visibility</mat-icon>
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</app-cv-templates-drawer>

@@ -1,0 +1,8 @@
+<div class="wrapper">
+  <header>
+    <app-header [isAuthenticated]="!!(isAuthenticated$ | async)"></app-header>
+  </header>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</div>

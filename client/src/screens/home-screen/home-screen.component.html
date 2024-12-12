@@ -1,0 +1,57 @@
+<div class="login-container">
+  <mat-card class="p-4 flex center-xs">
+    <mat-card-title>{{
+      isCreatingAccount ? "Register" : "Login"
+    }}</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <mat-form-field class="full-width">
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username" required />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password" required />
+        </mat-form-field>
+
+        <div class="flex end-xs">
+          <button
+            *ngIf="!isCreatingAccount"
+            mat-raised-button
+            color="accent"
+            type="submit"
+            class="mr-5"
+          >
+            Login
+          </button>
+          <button
+            *ngIf="!isCreatingAccount"
+            mat-raised-button
+            color="primary"
+            (click)="isCreatingAccount = !isCreatingAccount"
+          >
+            Create account
+          </button>
+          <button
+            *ngIf="isCreatingAccount"
+            mat-raised-button
+            color="primary"
+            class="mr-5"
+            (click)="isCreatingAccount = !isCreatingAccount"
+          >
+            Back to login
+          </button>
+          <button
+            *ngIf="isCreatingAccount"
+            mat-raised-button
+            color="warn"
+            (click)="register()"
+          >
+            Register
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

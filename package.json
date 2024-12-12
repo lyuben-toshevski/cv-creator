@@ -1,61 +1,23 @@
 {
   "name": "cv-creator",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.5.",
+  "main": "index.js",
   "scripts": {
-    "ng": "ng",
-    "start": "concurrently \"ng serve\" \"npm run electron\"",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "electron": "electron ./src/electron.dev",
-    "package:win": "npm run build && cross-var electron-packager dist/cv-creator/browser $npm_package_name-$npm_package_version --out=packages --platform=win32 --arch=all --overwrite ",
-    "package:linux": "npm run build && cross-var electron-packager dist/cv-creator/browser $npm_package_name-$npm_package_version --out=packages --platform=linux --arch=all --overwrite ",
-    "package:osx": "npm run build && cross-var electron-packager dist/cv-creator/browser $npm_package_name-$npm_package_version --out=packages --platform=darwin --arch=all --overwrite ",
-    "package:all": "npm run build && cross-var electron-packager dist/cv-creator/browser $npm_package_name-$npm_package_version --out=packages --all --arch=all --overwrite ",
-    "prepare": "husky"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "main": "main.js",
-  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lyuben-toshevski/cv-creator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lyuben-toshevski/cv-creator/issues"
+  },
+  "homepage": "https://github.com/lyuben-toshevski/cv-creator#readme",
   "dependencies": {
-    "@angular/animations": "^17.3.0",
-    "@angular/cdk": "^17.3.10",
-    "@angular/common": "^17.3.0",
-    "@angular/compiler": "^17.3.0",
-    "@angular/core": "^17.3.0",
-    "@angular/forms": "^17.3.0",
-    "@angular/material": "^17.3.10",
-    "@angular/platform-browser": "^17.3.0",
-    "@angular/platform-browser-dynamic": "^17.3.0",
-    "@angular/router": "^17.3.0",
-    "@ngrx/effects": "^17.2.0",
-    "@ngrx/entity": "^17.2.0",
-    "@ngrx/router-store": "^17.2.0",
-    "@ngrx/store": "^17.2.0",
-    "@ngrx/store-devtools": "^17.2.0",
-    "html2canvas": "^1.4.1",
-    "jspdf": "^2.5.2",
-    "marked": "^15.0.2",
-    "rxjs": "~7.8.0",
-    "tslib": "^2.3.0",
-    "zone.js": "~0.14.3"
-  },
-  "devDependencies": {
-    "@angular-devkit/build-angular": "^17.3.5",
-    "@angular/cli": "^17.3.5",
-    "@angular/compiler-cli": "^17.3.0",
-    "@types/jasmine": "~5.1.0",
-    "concurrently": "^9.1.0",
-    "cross-var": "^1.1.0",
-    "electron": "^33.2.0",
-    "electron-packager": "^17.1.2",
-    "husky": "^9.1.7",
-    "jasmine-core": "~5.1.0",
-    "karma": "~6.4.0",
-    "karma-chrome-launcher": "~3.2.0",
-    "karma-coverage": "~2.2.0",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.1.0",
-    "shelljs": "^0.8.5",
-    "typescript": "~5.4.2"
+    "shelljs": "^0.8.5"
   }
 }

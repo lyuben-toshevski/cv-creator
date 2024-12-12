@@ -1,0 +1,23 @@
+<div class="container">
+  <mat-toolbar class="h-100-p shadow-medium">
+    <div class="flex middle-xs h-100-p w-100-p">
+      <div class="flex middle-xs mr-9">
+        <img
+          src="assets/images/cv-creator-logo.png"
+          alt="logo"
+          class="logo"
+          width="30px"
+        />
+        <h1 class="m-0 ml-2">Creator</h1>
+      </div>
+      <div *ngIf="isAuthenticated" class="flex middle-xs between-xs w-100-p">
+        <button mat-button routerLink="/" routerLinkActive="active">
+          New resume
+        </button>
+        <button mat-button routerLink="/resume" routerLinkActive="active">
+          Logout
+        </button>
+      </div>
+    </div>
+  </mat-toolbar>
+</div>
