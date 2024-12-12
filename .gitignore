@@ -12,6 +12,7 @@
 /client/npm-debug.log
 /client/yarn-error.log
 /server/node_modules
+/server/dist
 
 # IDEs and editors
 .idea/

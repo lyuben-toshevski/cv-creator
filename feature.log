@@ -1,0 +1,42 @@
+BE:
+- resume details API
+- resume CRUD APIs
+- resume list API
+- resume preview API that can be accessed without authentication
+- resume service
+- authentication middleware to protect resumes
+- DB - create resume model
+- DB - link user and resumes
+- DB - add firstName and lastName to the user
+- DB - add validation to the user and password
+- AI assistant with a generic google account with the ability to send a total of x messages per day
+
+Before release:
+- Move the secrets and credentials to the environment variables
+- set auto-drop of the database after 1 week of inactivity
+
+FE:
+- add firstName and lastName fields during registration
+    - prepopulate the fields in the resume
+- store the token in the session storage
+- add an interceptor to attach the token with each request
+- add FE validations of the input fields during auth
+- add the resume list page
+    - add fetch resumes API call
+- add the resume details route
+    - add crud resume details API call
+    - update the resume details page to have the id in the params
+- add the resume preview page
+- SECTIONS - add section types
+- SECTIONS - add a button to add a new section
+- SECTIONS - add a button to delete a section
+- SECTIONS - add a button to add a new field
+- SECTIONS - add a button to delete a field
+- add more resume templates
+- add the rearrange functionality
+- add AI assistant to each field
+
+Issues to be fixed:
+- fix the mobile view when exporting or previewing the resume to show the full page
+- restrict deleting of the whole text and removing fields
+- restrict editting when in preview mode
